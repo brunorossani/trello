@@ -32,7 +32,7 @@ class Board extends Model
 {
     use GeneratesUniqueBoardSlugs, HasFactory, SoftDeletes;
 
-     /**
+    /**
      * Bootstrap the model and its traits.
      */
     protected static function boot(): void
@@ -96,7 +96,7 @@ class Board extends Model
         ];
     }
 
-    public function getRouteKeyName(): string
+    public function getRouteKeyName()
     {
         return 'slug';
     }

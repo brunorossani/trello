@@ -32,9 +32,13 @@ enum TeamRole: string
                 TeamPermission::CreateBoard,
                 TeamPermission::UpdateBoard,
                 TeamPermission::DeleteBoard,
+                TeamPermission::CreateBoardList,
+                TeamPermission::UpdateBoardList,
+                TeamPermission::DeleteBoardList,
             ],
             self::Member => [
                 TeamPermission::CreateBoard,
+                TeamPermission::CreateBoardList,
             ],
         };
     }
@@ -76,8 +80,8 @@ enum TeamRole: string
     public static function assignable(): array
     {
         return collect(self::cases())
-            ->filter(fn (self $role) => $role !== self::Owner)
-            ->map(fn (self $role) => ['value' => $role->value, 'label' => $role->label()])
+            ->filter(fn(self $role) => $role !== self::Owner)
+            ->map(fn(self $role) => ['value' => $role->value, 'label' => $role->label()])
             ->values()
             ->toArray();
     }

@@ -17,4 +17,8 @@ enum TeamPermission: string
     case CreateBoard = 'board:create';
     case UpdateBoard = 'board:update';
     case DeleteBoard = 'board:delete';
+
+    case CreateBoardList = 'board_list:create';
+    case UpdateBoardList = 'board_list:update';
+    case DeleteBoardList = 'board_list:delete';
 }

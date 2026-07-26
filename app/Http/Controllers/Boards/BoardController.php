@@ -12,9 +12,9 @@ use Inertia\Response;
 
 class BoardController extends Controller
 {
-    public function store(SaveBoardRequest $request, CreateBoard $createBoard): RedirectResponse
+    public function store(SaveBoardRequest $request, CreateBoard $action): RedirectResponse
     {
-        $createBoard->handle($request->user(), $request->validated('name'));
+        $action->handle($request->user(), $request->validated('name'));
 
         Inertia::flash('toast', ['type' => 'success', 'message' => __('Board created successfully.')]);
 

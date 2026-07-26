@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('board_id')->constrained('boards')->cascadeOnDelete();
             $table->foreignId('board_list_id')->constrained('board_lists')->cascadeOnDelete();
             $table->string('title');
             $table->text('description')->nullable();
