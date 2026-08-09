@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3'
 import { Plus } from '@lucide/vue'
-import type { Team } from '@/types'
-import { show as boardShow } from '@/routes/boards'
-import CreateBoardListModal from '@/components/trello/CreateBoardListModal.vue'
 import BoardListColumn from '@/components/trello/BoardListColumn.vue'
+import CreateBoardListModal from '@/components/trello/CreateBoardListModal.vue'
+import { show as boardShow } from '@/routes/boards'
+import type { Team } from '@/types'
 
-const props = defineProps<{
+defineProps<{
   board: {
     id: number
     name: string
@@ -41,17 +41,18 @@ defineOptions({
 </script>
 
 <template>
-
   <Head :title="board.name" />
 
-  <div v-if="board.lists.length" class="overflow-x-auto overflow-y-hidden p-4" style="height: calc(100dvh - 80px)">
+  <div v-if="board.lists.length" class="overflow-x-auto overflow-y-hidden p-4" style="height: calc(100dvh - 57px)">
     <div class="flex h-full min-w-max items-start gap-3">
       <BoardListColumn v-for="list in board.lists" :key="list.id" :list="list" />
 
       <CreateBoardListModal>
         <template #trigger>
-          <button type="button"
-            class="flex w-[300px] shrink-0 items-center gap-2 rounded-2xl border border-dashed border-sidebar-border/70 px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-sidebar-border hover:bg-muted/20 hover:text-foreground">
+          <button
+            type="button"
+            class="flex w-[300px] shrink-0 items-center gap-2 rounded-2xl border border-dashed border-sidebar-border/70 px-4 py-3 text-sm text-muted-foreground transition-colors hover:border-sidebar-border hover:bg-muted/20 hover:text-foreground"
+          >
             <Plus class="h-4 w-4" />
             Add list
           </button>

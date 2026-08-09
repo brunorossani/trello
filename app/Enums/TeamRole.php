@@ -35,10 +35,14 @@ enum TeamRole: string
                 TeamPermission::CreateBoardList,
                 TeamPermission::UpdateBoardList,
                 TeamPermission::DeleteBoardList,
+                TeamPermission::CreateCard,
+                TeamPermission::UpdateCard,
+                TeamPermission::DeleteCard,
             ],
             self::Member => [
                 TeamPermission::CreateBoard,
                 TeamPermission::CreateBoardList,
+                TeamPermission::CreateCard,
             ],
         };
     }

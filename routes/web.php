@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Teams\TeamInvitationController;
 use App\Http\Controllers\Boards\BoardListController;
+use App\Http\Controllers\Boards\CardController;
 use App\Http\Controllers\Boards\BoardController;
 use App\Http\Middleware\EnsureTeamMembership;
 use App\Http\Controllers\DashboardController;
@@ -26,6 +27,11 @@ Route::prefix('{current_team}')->middleware(['auth', 'verified', App\Http\Middle
     Route::get('boards/{board:slug}', [BoardController::class, 'show'])->name('boards.show');
     
     Route::post('boards/{board:slug}/lists', [BoardListController::class, 'store'])->name('boards.lists.store');
+    Route::patch('boards/{board:slug}/lists/{list}', [BoardListController::class, 'update'])->name('boards.lists.update');
+    Route::delete('boards/{board:slug}/lists/{list}', [BoardListController::class, 'destroy'])->name('boards.lists.destroy');
+    Route::post('boards/{board:slug}/lists/{list}/cards', [CardController::class, 'store'])->name('boards.lists.cards.store');
+    Route::patch('boards/{board:slug}/cards/{card}', [CardController::class, 'update'])->name('boards.cards.update');
+    Route::delete('boards/{board:slug}/cards/{card}', [CardController::class, 'destroy'])->name('boards.cards.destroy');
 });
 
 
